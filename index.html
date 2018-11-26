@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sé una estrella || Demuestra tu talento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    
+    <div id="dash" v-cloak>
+        <ul id="slide-out" class="sidenav teal lighten-5">
+            <li>
+                <div class="user-view">
+                    <a><img class="circle" width="190" src="img/perfil.png"></a>
+                    <a href="#" target="_blank"><span class="gray-text name">Luis Raga</span></a>
+                    <a href="#"><span class="gray-text email">whary11@gmail.com</span></a>
+                </div>
+            </li>
+            
+            <li><a href="#!">Ver perfil<i class="material-icons">face</i></a></li>
+            
+            <li><div class="divider"></div></li>
+            <li><a href="{{ url('admin/facturacion') }}">Actualizar Cuenta<i class="material-icons">autorenew</i></a></li>
+            
+            <li><div class="divider"></div></li>
+            <li><a href="{{ url('/admin/crear-sucursal') }}">Crear Sucursal<i class="material-icons">where_to_vote</i></a></li>
+            <li><div class="divider"></div></li>
+            
+            <li><a class="sidenav-close" href="#!">Cerrar<i class="material-icons">keyboard_backspace</i></a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="red-text">Cerrar Sesión<i class="material-icons">power_settings_new</i></a></li>
+        </ul>
+        <div class="navbar-fixed">
+            <nav class="teal">
+                <div class="nav-wrapper" style="background-color:{{Auth::user()->color1}}">
+                        <div href="#" data-target="slide-out" style="cursor: pointer;" class="sidenav-trigger" id="menuLateral"><i class="material-icons large">menu</i></div>
+                        <a class="brand-logo center">
+                            <img src="img/cabecera.png" alt="Menus Facil Logo" width="100px" class="imagen-logo" style="margin-top:-20px;">
+                        </a>
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        <i class="material-icons">power_settings_new</i>
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+
+                    <section class="container">
+                        <div class="row">
+                            <div class="col s12 m4" v-for="tema in temas" style="cursor:pointer;">
+                                <div class="card hoverable">
+                                <div class="card-image">
+                                    <img :src="tema.imagen" height="200px">
+                                    <span class="card-title black-text">{{tema.titulo}}</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>{{tema.descripcion}} <b>{{tema.titulo}}</b></p>
+                                </div>
+                                <div class="card-action">
+                                    <a :href="tema.slug">Jugar</a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div>
+                    
+                    
+
+
+
+
+
+                    <!-- Compiled and minified JavaScript -->
+                    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                    <script>
+                        new Vue({
+                            el:'#dash',
+                            data:{
+                                temas:[
+                                    {
+                                        titulo:"Infancia",
+                                        imagen:"img/card1.png",
+                                        descripcion:"En esta seguidilla de retos pondremos a prueba lo que sabes sobre ",
+                                        slug:"temas.html"
+                                    },
+                                    {
+                                        titulo:"Vejez",
+                                        imagen:"img/card1.png",
+                                        descripcion:"En esta seguidilla de retos pondremos a prueba lo que sabes sobre ",
+                                        slug:"temas.html"
+                                    },
+
+                                    {
+                                        titulo:"Contratación",
+                                        imagen:"img/card1.png",
+                                        descripcion:"En esta seguidilla de retos pondremos a prueba lo que sabes sobre ",
+                                        slug:"temas.html"
+                                    },
+
+                                    {
+                                        titulo:"SIG",
+                                        imagen:"img/card1.png",
+                                        descripcion:"En esta seguidilla de retos pondremos a prueba lo que sabes sobre ",
+                                        slug:"temas.html"
+                                    },
+
+                                    {
+                                        titulo:"SIG",
+                                        imagen:"img/card1.png",
+                                        descripcion:"En esta seguidilla de retos pondremos a prueba lo que sabes sobre ",
+                                        slug:"temas.html"
+                                    },
+                                    {
+                                        titulo:"SIG",
+                                        imagen:"img/card1.png",
+                                        descripcion:"En esta seguidilla de retos pondremos a prueba lo que sabes sobre ",
+                                        slug:"temas.html"
+                                    }
+                                ]
+                            },
+                            methods:{
+
+                            }
+                        })
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var elems = document.querySelectorAll('.sidenav');
+                            var instances = M.Sidenav.init(elems, {});
+                        });
+                    </script>
+                </body>
+                </html>

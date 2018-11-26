@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <title>Temas</title>
+      <style>
+         [v-cloak] {
+            display: none;
+         }
+         .puntuacion{
+            position: fixed;
+            opacity:;
+            top: 30%;
+         }
+         .detalle{
+            padding: 40px;
+         }
+      </style>
+      
+   </head>
+   <body>
+      <main id="temas" v-cloak>
+         <ul id="slide-out" class="sidenav teal lighten-5">
+            <li>
+               <div class="user-view">
+                  <a><img class="circle" width="190" src="img/perfil.png"></a>
+                  <a href="#" target="_blank"><span class="gray-text name">Luis Raga</span></a>
+                  <a href="#"><span class="gray-text email">whary11@gmail.com</span></a>
+               </div>
+            </li>
+            <li><a href="#!">Ver perfil<i class="material-icons">face</i></a></li>
+            <li>
+               <div class="divider"></div>
+            </li>
+            <li><a href="{{ url('admin/facturacion') }}">Actualizar Cuenta<i class="material-icons">autorenew</i></a></li>
+            <li>
+               <div class="divider"></div>
+            </li>
+            <li><a href="{{ url('/admin/crear-sucursal') }}">Crear Sucursal<i class="material-icons">where_to_vote</i></a></li>
+            <li>
+               <div class="divider"></div>
+            </li>
+            <li><a class="sidenav-close" href="#!">Cerrar<i class="material-icons">keyboard_backspace</i></a></li>
+            <li>
+               <div class="divider"></div>
+            </li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="red-text">Cerrar Sesión<i class="material-icons">power_settings_new</i></a></li>
+         </ul>
+         <div class="navbar-fixed">
+            <nav class="teal">
+               <div class="nav-wrapper">
+                  <div href="#" data-target="slide-out" style="cursor: pointer;" class="sidenav-trigger" id="menuLateral"><i class="material-icons large">menu</i></div>
+                  <a class="brand-logo center">
+                  <img src="img/cabecera.png" alt="Menus Facil Logo" width="100px" class="imagen-logo" style="margin-top:-20px;">
+                  </a>
+                  <ul class="right hide-on-med-and-down">
+                     <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <i class="material-icons">power_settings_new</i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        </form>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+
+
+
+
+
+         <section class="container">
+             <section class="row">
+                 <section class="col m8 s12 offset-m2">
+                     <div class="card">
+                        <div class="card-content">
+                            <p>¿Cuales son los subsistemas de la Secretaría Distrital de Integración Social?</p>
+                            
+                            <br>
+                            
+                            <section v-for="resp in pregunta.respuestas">
+                               <p>
+                                 <label>
+                                    <input name="group1" type="radio" @click="capturar(resp)"/>
+                                    <span>{{resp.nombre}}</span>
+                                 </label>
+                              </p> 
+                              <br>                            
+                           </section>
+                           <button class="btn btn primary" @click="validar()">Responder</button>
+                            <br>                                        
+                        </div>
+                     </div>
+                 </section>
+             </section>
+         </section>
+
+            <div class="row puntuacion z-depth-5">
+               <div class="amber lighten-1 col m-4">
+                  <p class="center-align">Resumen de puntos</p>
+                  <div class="detalle">
+                     <p class="center-align">{{detalle.puntos}} Puntos</p>
+                     <p class="center-align">Nivel {{detalle.nivel}}</p>
+                  </div>
+                  <!-- <div class="detalle">
+                     
+                  </div> -->
+               </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+         <!-- Modal  para conteo-->
+        <div id="conteo" class="modal" style="width:400px">
+            <div class="modal-content">
+                <p></p>
+                <h1 class="center-align">{{fin_contador}}</h1>
+                <p class="center-align">Para jugar</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      </main>
+      <script src="js/sweetalert.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <script>
+         new Vue({
+             el:'#temas',
+             data:{
+                 fin_contador:3,
+                 resp:"",
+               //   mensaje:"",
+                 descripcion:"",
+                 detalle:{
+                    puntos:0,
+                    nivel:1,
+                 },
+                 pregunta:{
+                    id:283947,
+                    name:'¿ Cuales son los subsistemas de la Secretaría Distrital de Integración Social. ?',
+                    respuestas:[
+                     {nombre:'SIG y Gestión del talento humano', tipo:'incorrecta'},
+                     {nombre:'Ambiental y PIGA', tipo:'incorrecta'},
+                     {nombre:'Gestión Ambiental, gestión documental, responsabilidad social, seguridad y salud en el trabajo', tipo:'correcta'},
+                     {nombre:'Poblacional y territorial', tipo:'incorrecta'},
+                    ],
+                 }
+             },
+             created(){
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var s = document.querySelectorAll('.sidenav');
+                    var sidenav = M.Sidenav.init(s, {});
+                  });
+             },
+             mounted(){
+/////////////////Contador ///////////////////////
+                let elem = document.querySelector('#conteo');
+                let conteo = M.Modal.init(elem,{
+                    dismissible:false,
+                    opacity:1,
+                    endingTop:30
+                });
+                conteo.open();
+                let contador = 0;
+                // Tiempo en en el que deseas que redireccione la funcion.
+                setInterval(()=>{
+                    if (contador >= this.fin_contador) {
+                     conteo.close()
+                    }else{
+                        this.fin_contador = this.fin_contador-1 
+                    }
+                },1000);
+//////////////////////////Contador////////////////   
+             },
+             methods:{
+               validar(){
+///////////////Inicio de la validación///////////////
+                  if (this.resp.tipo == "incorrecta") {
+                     swal({
+                        title:'Upps..',
+                        text: 'Lo sentimos, haz perdido. \n Te invatmos a seguir estudiando.',
+                        icon: "error",
+                     });
+                  }else if(this.resp.tipo == "correcta"){
+                     swal({
+                        title:'Enhorabuena...',
+                        text: 'Su respuesta es correcta, pasas al siguiente nivel.',
+                        icon: "success",
+                     });
+                     this.detalle.puntos = this.detalle.puntos + 50
+                     this.detalle.nivel++
+                  }else{
+                     swal("Debes seleccionar una respuesta.")
+                  }
+/////////////////fin de la validación////////////////////
+               },
+               capturar(respuesta){
+                  this.resp = respuesta
+                  console.log(respuesta);
+                  
+               }
+             }
+         })
+      </script>  
+   </body>
+</html>
