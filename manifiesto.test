@@ -1,0 +1,12 @@
+Diseño de las bases de datos
+
+1. Esta tabla 'TEMAS' debe tener
+    a. nombre del tema
+    b. Descripción del tema
+    c. relación con la tabla del usuario que lo crea
+2. Esta tabla 'PREGUNTAS' debe tener
+    a. Nompre de la pregunta
+    b. Descripción de la pregunta, puede ser null
+    c. Relación con la tabla de 'TEMAS'
+    d. Nivel al que pertenece, debemos evaluar la exitencia de este campo
+    e. Relación con el usuario que la crea
