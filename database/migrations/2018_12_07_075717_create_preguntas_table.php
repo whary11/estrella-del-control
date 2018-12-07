@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemasTable extends Migration
+class CreatePreguntasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateTemasTable extends Migration
      */
     public function up()
     {
-        Schema::create('temas', function (Blueprint $table) {
+        Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('nivel')->nullable();
             $table->integer('user_id')->unsigned();            
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
+            $table->integer('tema_id')->unsigned();            
+            $table->foreign('tema_id')->references('id')->on('temas');
         });
     }
 
@@ -30,6 +33,6 @@ class CreateTemasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temas');
+        Schema::dropIfExists('preguntas');
     }
 }

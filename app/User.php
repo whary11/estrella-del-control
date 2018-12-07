@@ -27,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function temas(){
+        return $this->hasMany(Tema::class)->select('id','nombre', 'user_id');
+    }
+
+    public function preguntas(){
+        return $this->hasMany(Pregunta::class)->select('id','nombre','user_id');
+    }
 }

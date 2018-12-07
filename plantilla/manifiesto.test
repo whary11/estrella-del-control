@@ -10,3 +10,7 @@ Diseño de las bases de datos
     c. Relación con la tabla de 'TEMAS'
     d. Nivel al que pertenece, debemos evaluar la exitencia de este campo
     e. Relación con el usuario que la crea
+3. Esta tabla 'RESPUESTAS' debe tener
+    a. Nompre de la respuesta
+    b. Descripción de la respuesta, puede ser null
+    c. Relación con la tabla de 'TEMAS', 'PREGUNTAS' y 'USERS'

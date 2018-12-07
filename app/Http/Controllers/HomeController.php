@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tema;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use App\Respuesta;
+use App\Pregunta;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Haciendo las consultas por medio de las relaciones ya programadas en los modelos
+        $usuario = User::with(['temas', 'preguntas'])
+                    ->where('id', '=', Auth::Id())
+                    ->get()
+                    ->first();
+
+        $temas = Tema::with(['preguntas'])
+                        ->get()
+                        ->first();
+
+        $respuestas=[];
+        foreach ($temas->preguntas as $key => $pregunta) {
+            $resp = Pregunta::with(['respuestas'])
+                    ->where('id','=',$pregunta->id)
+                    ->get()
+                    ->first();
+                    $respuestas[$key] = $resp;
+        } 
+        return ([$usuario, $temas, $respuestas]);
     }
 }
