@@ -15,8 +15,10 @@ class CreateTemasTable extends Migration
     {
         Schema::create('temas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->string('descripcion');
+            $table->string('url');
+            $table->string('estado')->default('PUBLISHED'); //NOT PUBLISHED
             $table->integer('user_id')->unsigned();            
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

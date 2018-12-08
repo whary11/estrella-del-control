@@ -28,6 +28,52 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $temas = Tema::all()->where('estado','===','PUBLISHED');
+        // return $temas;
+        return view('admin.principal', compact('temas'));
+    }
+
+    public function juego($url){
+        $temas = Tema::with(['preguntas'])
+                        ->get()
+                        ->where('url','==',$url)
+                        ->first();
+
+                        $respuestas=[];
+        foreach ($temas->preguntas as $key => $pregunta) {
+            $resp = Pregunta::with(['respuestas'])
+                    ->where('id','=',$pregunta->id)
+                    ->get()
+                    ->first();
+                    $respuestas[$key] = $resp;
+        } 
+
+
+        return( $respuestas );
+    } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function apis(){
         // Haciendo las consultas por medio de las relaciones ya programadas en los modelos
         $usuario = User::with(['temas', 'preguntas'])
                     ->where('id', '=', Auth::Id())
@@ -46,6 +92,6 @@ class HomeController extends Controller
                     ->first();
                     $respuestas[$key] = $resp;
         } 
-        return ([$usuario, $temas, $respuestas]);
+        return ( $respuestas );
     }
 }

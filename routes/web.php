@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/apis', 'HomeController@apis')->name('apis');
+
+///////////////Rutas de administración ///////////////////////
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/temas/{url}', 'HomeController@juego')->name('home');
