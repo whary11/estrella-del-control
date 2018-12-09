@@ -48,9 +48,10 @@ class HomeController extends Controller
                     ->first();
                     $respuestas[$key] = $resp;
         } 
+        //Enviar una respuesta preguntas con 4 respuestas aleatorias.
 
 
-        return( $respuestas );
+        return view('admin.tema');
     } 
 
 
