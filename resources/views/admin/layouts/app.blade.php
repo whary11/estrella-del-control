@@ -82,7 +82,7 @@
         </ul>
     </div>
     <!-- Compiled and minified JavaScript -->
-    <script src="{{asset('/js/materialize.min.js')}}"></script>
+    <script src="{{ asset('/js/materialize.min.js')}}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
