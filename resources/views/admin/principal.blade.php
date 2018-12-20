@@ -32,6 +32,13 @@
 
 
 
-
-                    
+    <script src="/js/home.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems, {});
+                var botonesFlotantes = document.querySelectorAll('.fixed-action-btn');
+                var instances = M.FloatingActionButton.init(botonesFlotantes, {});
+        });
+    </script>
 @endsection

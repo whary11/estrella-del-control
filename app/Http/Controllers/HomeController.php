@@ -86,13 +86,21 @@ class HomeController extends Controller
                         ->first();
 
         $respuestas=[];
-        foreach ($temas->preguntas as $key => $pregunta) {
+
+        // foreach ($temas->preguntas as $key => $pregunta) {
             $resp = Pregunta::with(['respuestas'])
-                    ->where('id','=',$pregunta->id)
+                    // ->where('id','=',$temas->preguntas[rand(1,count($temas->preguntas))]->id)
+                    ->limit(1)
+                    ->inRandomOrder()
                     ->get()
                     ->first();
-                    $respuestas[$key] = $resp;
-        } 
-        return ( $respuestas );
+                    // $respuestas[$key] = $resp;
+        // } 
+
+        // $d=rand(1,30);
+        // echo count($temas->preguntas);
+        // array_rand(array, numero)
+
+        return ( $resp );
     }
 }

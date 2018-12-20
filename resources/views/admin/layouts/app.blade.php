@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('/css/materialize.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/juego.min.css')}}">
 </head>
 <body>
     <div id="dash" v-cloak>
@@ -82,14 +82,7 @@
         </ul>
     </div>
     <!-- Compiled and minified JavaScript -->
-    <script src="{{ asset('/js/materialize.min.js')}}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, {});
-            var botonesFlotantes = document.querySelectorAll('.fixed-action-btn');
-            var instances = M.FloatingActionButton.init(botonesFlotantes, {});
-        });
-    </script>
+    <!-- <script src="{{ asset('/js/materialize.min.js')}}"></script> -->
+    
 </body>
 </html>

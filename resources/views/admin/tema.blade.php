@@ -67,7 +67,7 @@
                   </div>
                </div>
             </div>
-
+            
 
 
 
@@ -84,12 +84,14 @@
                 <p class="center-align">Para jugar</p>
             </div>
         </div>
-
-
-
-
 </div>
    <script src="/js/juego.min.js"></script>
-
-    
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, {});
+            var botonesFlotantes = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(botonesFlotantes, {});
+      });
+   </script>
 @endsection

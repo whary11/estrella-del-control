@@ -96,7 +96,7 @@ new Vue({
             // se debe crear un metodo que espere el tema como parametro obligatorio, y la preguntaAnterior
             // opcional para que sea versatil y se pueda utilizar para solicitar la pregunta inicial que no
             // tendría una pregunta anterior.
-            // Después de hacer la petición, se debe almacenar la pregunta en la propiedad pregunta para que sea renderizada en la vista de inmediato simulación de realtime.
+            // Después de hacer la petición, se debe almacenar la pregunta en la propiedad pregunta para que sea renderizada en la vista de inmediato.
             // Animaciones aquí
 
          }else{
