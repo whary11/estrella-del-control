@@ -15,8 +15,8 @@ class PreguntaController extends Controller
 
 
     public function get(Request $request){
-        return $request->idPreguntaAnterior;
-        $this.getPregunta($request->idTema, $request->idPreguntaAnterior);
+        // return $request->idPreguntaAnterior;
+        return $this->getPregunta($request->idTema, $request->idPreguntaAnterior);
     }
 
 
@@ -30,7 +30,7 @@ class PreguntaController extends Controller
         for ($i=0; $i < 100; $i++) { 
             $resp = Pregunta::with( ['respuestas'] )
                             ->where( 'tema_id','=',$tema_id )
-                            // ->where( 'id','=!', $preguntaAnte )
+                            ->where( 'id','!=', $preguntaAnte )
                             ->inRandomOrder()
                             ->get()
                             ->first();

@@ -30,7 +30,7 @@
                  <section class="col m8 s12 offset-m2">
                      <div class="card">
                         <div class="card-content">
-                            <p v-model="pregunta.nombre">{{ $pregunta->nombre }}</p>
+                            <p>@{{ pregunta.nombre }}</p>
                             <br>
                             <section v-for="resp in pregunta.respuestas">
                                <p>

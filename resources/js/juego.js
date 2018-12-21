@@ -1,5 +1,3 @@
-
-
 new Vue({
     el:'#temas',
     data:{
@@ -63,6 +61,8 @@ new Vue({
                icon: "success",
                button:'Siguiente pregunta'
             });
+
+            this.resp = ''
             this.detalle.puntos = this.detalle.puntos + 50
             this.detalle.nivel++
 
@@ -74,10 +74,10 @@ new Vue({
                id:8767,
                nombre:'¿ Cuál no es subsistema de la Secretaría Distrital de Integración Social. ?',
                respuestas:[
-                  {nombre:'SIG y Gestión del talento humano', tipo:'incorrecta'},
-                  {nombre:'Ambiental y PIGA', tipo:'incorrecta'},
-                  {nombre:'Gestión Ambiental, gestión documental, responsabilidad social, seguridad y salud en el trabajo', tipo:'correcta'},
-                  {nombre:'Poblacional y territorial', tipo:'incorrecta'},
+                  {nombre:'SIG y Gestión del talento humano', tipo:'INCORRECTA'},
+                  {nombre:'Ambiental y PIGA', tipo:'INCORRECTA'},
+                  {nombre:'Gestión Ambiental, gestión documental, responsabilidad social, seguridad y salud en el trabajo', tipo:'CORRECTA'},
+                  {nombre:'Poblacional y territorial', tipo:'INCORRECTA'},
                ],
             }
             /////////////////////Instrucciones para tener en cuenta///////////////////////////////
