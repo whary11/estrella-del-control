@@ -36,4 +36,8 @@ class User extends Authenticatable
     public function preguntas(){
         return $this->hasMany(Pregunta::class)->select('id','nombre','user_id');
     }
+
+    public function respuestas(){
+        return $this->hasMany(Respuesta::class)->select('id','nombre','user_id');
+    }
 }

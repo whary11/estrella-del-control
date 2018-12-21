@@ -75,32 +75,14 @@ class HomeController extends Controller
 
 
     public function apis(){
-        // Haciendo las consultas por medio de las relaciones ya programadas en los modelos
-        $usuario = User::with(['temas', 'preguntas'])
-                    ->where('id', '=', Auth::Id())
-                    ->get()
-                    ->first();
 
-        $temas = Tema::with(['preguntas'])
-                        ->get()
-                        ->first();
+        $tema_id = 1;
 
-        $respuestas=[];
-
-        // foreach ($temas->preguntas as $key => $pregunta) {
             $resp = Pregunta::with(['respuestas'])
-                    // ->where('id','=',$temas->preguntas[rand(1,count($temas->preguntas))]->id)
-                    ->limit(1)
+                    ->where('tema_id','=',$tema_id)
                     ->inRandomOrder()
                     ->get()
                     ->first();
-                    // $respuestas[$key] = $resp;
-        // } 
-
-        // $d=rand(1,30);
-        // echo count($temas->preguntas);
-        // array_rand(array, numero)
-
         return ( $resp );
     }
 }
