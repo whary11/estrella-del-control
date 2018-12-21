@@ -16,7 +16,7 @@
         <ul id="slide-out" class="sidenav teal lighten-5">
             <li>
                 <div class="user-view">
-                <a><img class="circle" width="190" src="{{Auth::user()->avatar}}"></a>
+                <a><img class="circle" width="190"></a>
                 <a href="#" target="_blank"><span class="gray-text name">{{Auth::user()->name}}</span></a>
                     <a href="#"><span class="gray-text email">{{Auth::user()->email}}</span></a>
                 </div>

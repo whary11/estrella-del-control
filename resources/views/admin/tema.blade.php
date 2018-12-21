@@ -30,7 +30,7 @@
                  <section class="col m8 s12 offset-m2">
                      <div class="card">
                         <div class="card-content">
-                            <p>@{{ pregunta.nombre}}</p>
+                            <p v-model="pregunta.nombre">{{ $pregunta->nombre }}</p>
                             <br>
                             <section v-for="resp in pregunta.respuestas">
                                <p>
@@ -67,9 +67,13 @@
                   </div>
                </div>
             </div>
+
+            <input type="hidden" name="idTema" value='{{ $pregunta->tema_id }}'>
             
 
-
+<pre>
+         @{{ $data.resp }}
+</pre>
 
 
 
@@ -85,6 +89,9 @@
             </div>
         </div>
 </div>
+<script>
+      let pregunta = <?php echo json_encode($pregunta); ?>;
+</script>
    <script src="/js/juego.min.js"></script>
    <script>
       document.addEventListener('DOMContentLoaded', function() {

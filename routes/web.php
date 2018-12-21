@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//////Pruebas de consultas///////
 Route::get('/apis', 'HomeController@apis')->name('apis');
 
 ///////////////Rutas de administración ///////////////////////
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/temas/{url}', 'HomeController@juego')->name('home');
+
+///////Consultas a las preguntas////////////
+Route::post('/juego/preguntas', 'PreguntaController@get');

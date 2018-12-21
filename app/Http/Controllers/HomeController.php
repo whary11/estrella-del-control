@@ -34,24 +34,30 @@ class HomeController extends Controller
         return view('admin.principal', compact('temas'));
     }
 
+
+
     public function juego($url){
-        $temas = Tema::with(['preguntas'])
+        $tema = Tema::where('url','=',$url)
                         ->get()
-                        ->where('url','==',$url)
                         ->first();
 
-                        $respuestas=[];
-        foreach ($temas->preguntas as $key => $pregunta) {
-            $resp = Pregunta::with(['respuestas'])
-                    ->where('id','=',$pregunta->id)
-                    ->get()
-                    ->first();
-                    $respuestas[$key] = $resp;
-        } 
+                        $pregunta = $this->apis($tema->id);
+
+        // for ($i=0; $i < 100; $i++) { 
+        //     $pregunta = Pregunta::with(['respuestas'])
+        //                     ->where('tema_id','=',$tema->id)
+        //                     ->inRandomOrder()
+        //                     ->get()
+        //                     ->first();
+        //     if (count($resp->respuestas)==4) {
+        //         return ( $pregunta );                        
+        //     }
+        // }
+ 
         //Enviar una respuesta preguntas con 4 respuestas aleatorias.
 
-
-        return view('admin.tema');
+            // return $pregunta;
+        return view('admin.tema', compact('pregunta'));
     } 
 
 
@@ -74,15 +80,18 @@ class HomeController extends Controller
 
 
 
-    public function apis(){
-
-        $tema_id = 1;
-
+    public function apis($tema_id = 1){
+        // $tema_id = 1;
+        for ($i=0; $i < 100; $i++) { 
             $resp = Pregunta::with(['respuestas'])
-                    ->where('tema_id','=',$tema_id)
-                    ->inRandomOrder()
-                    ->get()
-                    ->first();
-        return ( $resp );
+                            ->where('tema_id','=',$tema_id)
+                            ->inRandomOrder()
+                            ->get()
+                            ->first();
+            if (count($resp->respuestas)==4) {
+                return ( $resp );                        
+            }
+        }
+            
     }
 }

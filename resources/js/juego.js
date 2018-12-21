@@ -1,3 +1,5 @@
+
+
 new Vue({
     el:'#temas',
     data:{
@@ -11,22 +13,10 @@ new Vue({
             puntos:0,
             nivel:1,
         },
-        pregunta:{
-           id:283947,
-           nombre:'¿ Cuales son los subsistemas de la Secretaría Distrital de Integración Social. ?',
-           respuestas:[
-            {nombre:'SIG y Gestión del talento humano', tipo:'incorrecta'},
-            {nombre:'Ambiental y PIGA', tipo:'incorrecta'},
-            {nombre:'Gestión Ambiental, gestión documental, responsabilidad social, seguridad y salud en el trabajo', tipo:'correcta'},
-            {nombre:'Poblacional y territorial', tipo:'incorrecta'},
-           ],
-        }
+        pregunta:''
     },
     created(){
-         // document.addEventListener('DOMContentLoaded', function() {
-         //   var s = document.querySelectorAll('.sidenav');
-         //   var sidenav = M.Sidenav.init(s, {});
-         // });
+       this.pregunta = pregunta;
       },
       mounted(){
          /////////////////Contador ///////////////////////
@@ -53,7 +43,7 @@ new Vue({
     methods:{
       validar(){
 ///////////////Inicio de la validación///////////////
-         if (this.resp.tipo == "incorrecta") {
+         if (this.resp.tipo == "INCORRECTA") {
             swal({
                title:'Upps..',
                text: 'Lo sentimos, haz perdido. \n Te invatmos a seguir estudiando.',
@@ -66,7 +56,7 @@ new Vue({
                   
                // }
             });
-         }else if(this.resp.tipo == "correcta"){
+         }else if(this.resp.tipo == "CORRECTA"){
             swal({
                title:'Enhorabuena...',
                text: 'Su respuesta es correcta, pasas al siguiente nivel.',
@@ -75,6 +65,10 @@ new Vue({
             });
             this.detalle.puntos = this.detalle.puntos + 50
             this.detalle.nivel++
+
+            this.getPregunta(this.pregunta.tema_id, this.pregunta.id)
+
+
 
             this.pregunta = {
                id:8767,
@@ -104,9 +98,31 @@ new Vue({
          }
 /////////////////fin de la validación////////////////////
       },
+      getPregunta(idTema, idPreguntaAnterior, nivel){
+         let url = '/juego/preguntas';
+         if (idPreguntaAnterior) {
+            axios.post(url, {
+               idTema:idTema,
+               idPreguntaAnterior: idPreguntaAnterior,
+               nivel: nivel
+             })
+             .then(function (resp) {
+               console.log(resp.data);
+             })
+             .catch(function (error) {
+               console.log(error);
+             });
+         }else{
+
+
+
+
+         }
+         
+      },
       capturar(respuesta){
          this.resp = respuesta
-         console.log(respuesta);
+         // console.log(respuesta);
       },
       hora(){
          let today=new Date();
