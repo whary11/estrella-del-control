@@ -42,18 +42,49 @@ new Vue({
       validar(){
 ///////////////Inicio de la validación///////////////
          if (this.resp.tipo == "INCORRECTA") {
+
             swal({
-               title:'Upps..',
-               text: 'Lo sentimos, haz perdido. \n Te invatmos a seguir estudiando.',
-               icon: "error",
-               // Mostrar la puntuación final y solicitar los datos
-               // que sean necesarios para luego enviar a la vista
-               // para que seleccione un nuevo tema y siga participando.
-               // {
-               //    tiempoT:this.datelle.tiempoT,
-                  
+               title: "Upps..",
+               text: "Lo sentimos, haz perdido. \n Te invatmos a seguir estudiando.",
+               icon: "warning",
+               buttons: "Volver a intentar",
+               // dangerMode: true,
+             })
+             .then((willDelete) => {
+               // if (willDelete) {
+               //   swal("Poof! Your imaginary file has been deleted!", {
+               //     icon: "success",
+               //   });
+               // } else {
+               //   swal("Your imaginary file is safe!");
                // }
-            });
+               location.href ="/home";
+               
+             });
+
+
+
+
+
+            // swal({
+            //    title:'Upps..',
+            //    text: 'Lo sentimos, haz perdido. \n Te invatmos a seguir estudiando.',
+            //    icon: "error",
+            //    // Mostrar la puntuación final y solicitar los datos
+            //    // que sean necesarios para luego enviar a la vista
+            //    // para que seleccione un nuevo tema y siga participando.
+            //    // {
+            //    //    tiempoT:this.datelle.tiempoT,
+                  
+            //    // }
+            // });
+
+            
+
+
+
+
+
          }else if(this.resp.tipo == "CORRECTA"){
             swal({
                title:'Enhorabuena...',
@@ -65,21 +96,8 @@ new Vue({
             this.resp = ''
             this.detalle.puntos = this.detalle.puntos + 50
             this.detalle.nivel++
-
+            ///////Obtiene una pregunta aleatoria////////////////
             this.getPregunta(this.pregunta.tema_id, this.pregunta.id)
-
-
-
-            this.pregunta = {
-               id:8767,
-               nombre:'¿ Cuál no es subsistema de la Secretaría Distrital de Integración Social. ?',
-               respuestas:[
-                  {nombre:'SIG y Gestión del talento humano', tipo:'INCORRECTA'},
-                  {nombre:'Ambiental y PIGA', tipo:'INCORRECTA'},
-                  {nombre:'Gestión Ambiental, gestión documental, responsabilidad social, seguridad y salud en el trabajo', tipo:'CORRECTA'},
-                  {nombre:'Poblacional y territorial', tipo:'INCORRECTA'},
-               ],
-            }
             /////////////////////Instrucciones para tener en cuenta///////////////////////////////
             // {
             //    tema:'',
@@ -106,11 +124,12 @@ new Vue({
                idPreguntaAnterior: idPreguntaAnterior,
                nivel: nivel
              })
-             .then(function (resp) {
-               console.log(resp.data);
+             .then((resp)=>{
+               // console.log(resp.data);
+               this.pregunta = resp.data;
              })
-             .catch(function (error) {
-               console.log(error);
+             .catch((error)=>{
+               console.log('Estamos teniendo errores, nuestro equipo ya está trabajando para resolverlo.');
              });
          }else{
 
