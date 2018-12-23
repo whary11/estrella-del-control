@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('/css/juego.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/dash.min.css')}}">
 </head>
 <body>
     <div id="dash" v-cloak>

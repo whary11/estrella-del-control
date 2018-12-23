@@ -2,5 +2,7 @@
     "/js/juego.min.js": "/js/juego.min.js",
     "/css/juego.min.css": "/css/juego.min.css",
     "/js/home.min.js": "/js/home.min.js",
-    "/css/home.min.css": "/css/home.min.css"
+    "/css/home.min.css": "/css/home.min.css",
+    "/js/dash.min.js": "/js/dash.min.js",
+    "/css/dash.min.css": "/css/dash.min.css"
 }

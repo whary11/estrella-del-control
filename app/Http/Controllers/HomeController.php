@@ -33,6 +33,13 @@ class HomeController extends Controller
         // return $temas;
         return view('admin.principal', compact('temas'));
     }
+    public function dash()
+    {
+
+        
+        // return $temas;
+        return view('admin.dashboard.index');
+    }
 
 
 
