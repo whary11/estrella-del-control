@@ -28,8 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $temas = Tema::all()->where('estado','===','PUBLISHED');
+        // return $temas;
         // return $temas;
         return view('admin.principal', compact('temas'));
     }

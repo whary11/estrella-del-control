@@ -64,27 +64,6 @@ new Vue({
 
 
 
-
-
-            // swal({
-            //    title:'Upps..',
-            //    text: 'Lo sentimos, haz perdido. \n Te invatmos a seguir estudiando.',
-            //    icon: "error",
-            //    // Mostrar la puntuación final y solicitar los datos
-            //    // que sean necesarios para luego enviar a la vista
-            //    // para que seleccione un nuevo tema y siga participando.
-            //    // {
-            //    //    tiempoT:this.datelle.tiempoT,
-                  
-            //    // }
-            // });
-
-            
-
-
-
-
-
          }else if(this.resp.tipo == "CORRECTA"){
             swal({
                title:'Enhorabuena...',
@@ -132,10 +111,7 @@ new Vue({
                console.log('Estamos teniendo errores, nuestro equipo ya está trabajando para resolverlo.');
              });
          }else{
-
-
-
-
+            
          }
          
       },

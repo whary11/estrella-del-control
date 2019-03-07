@@ -23,7 +23,7 @@ Route::get('/apis', 'HomeController@apis')->name('apis');
 ///////////////Rutas de administración ///////////////////////
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/temas/{url}', 'HomeController@juego')->name('home');
-Route::get('/dashboard', 'HomeController@dash')->name('home');
+Route::get('/dashboard/temas', 'HomeController@dash')->name('home');
 
 
 ///////Consultas a las preguntas////////////
@@ -31,3 +31,4 @@ Route::post('/juego/preguntas', 'PreguntaController@get');
 
 //////Consulta a los temas////////
 Route::get('/apis/temas', 'TemaController@get');
+Route::put('/apis/temas/edit', 'TemaController@edit');

@@ -10,9 +10,14 @@
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/dash.min.css')}}">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="dash" v-cloak>
+    <div>
         <ul id="slide-out" class="sidenav teal lighten-5">
             <li>
                 <div class="user-view">
@@ -25,7 +30,9 @@
             <li><a href="#!">Ver perfil<i class="material-icons">face</i></a></li>
             
             <li><div class="divider"></div></li>
-            <li><a href="{{ url('admin/facturacion') }}">Actualizar Cuenta<i class="material-icons">autorenew</i></a></li>
+            <li><a href="{{ url('/dashboard/temas') }}">Temas<i class="material-icons">home</i></a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="{{ url('/dashboard/preguntas') }}">Preguntas<i class="material-icons">question_answer</i></a></li>
             
             <li><div class="divider"></div></li>
             <li><a href="{{ url('/admin/crear-sucursal') }}">Crear Sucursal<i class="material-icons">where_to_vote</i></a></li>
@@ -81,6 +88,11 @@
             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
         </ul>
     </div>
+
+
+    @yield('script')
+
+
     <!-- Compiled and minified JavaScript -->
     <!-- <script src="{{ asset('/js/materialize.min.js')}}"></script> -->
     

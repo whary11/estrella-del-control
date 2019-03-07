@@ -20,24 +20,21 @@ class PreguntaController extends Controller
     }
 
 
-
-
-
-
-
     public function getPregunta($tema_id, $preguntaAnte){
         // $tema_id = 1;
         for ($i=0; $i < 100; $i++) { 
             $resp = Pregunta::with( ['respuestas'] )
-                            ->where( 'tema_id','=',$tema_id )
-                            ->where( 'id','!=', $preguntaAnte )
+                            ->where( 'tema_id' , '=' ,$tema_id )
+                            ->where( 'id' , '!=' , $preguntaAnte )
                             ->inRandomOrder()
                             ->get()
                             ->first();
-            if ( count( $resp->respuestas )==4 ) {
+            if ( count( $resp->respuestas ) == 4 ) {
                 return ( $resp );                        
             }
         }
             
     }
+
+    
 }

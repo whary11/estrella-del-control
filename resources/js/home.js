@@ -1,26 +1,7 @@
 new Vue({
     el:'#temas',
     data:{
-        fin_contador:3,
-        resp:"",
-        descripcion:"",
-        active:false,
-        detalle:{
-            hora:"06:55 amm",
-            tiempT:'1000',
-            puntos:0,
-            nivel:1,
-        },
-        pregunta:{
-           id:283947,
-           nombre:'¿ Cuales son los subsistemas de la Secretaría Distrital de Integración Social. ?',
-           respuestas:[
-            {nombre:'SIG y Gestión del talento humano', tipo:'incorrecta'},
-            {nombre:'Ambiental y PIGA', tipo:'incorrecta'},
-            {nombre:'Gestión Ambiental, gestión documental, responsabilidad social, seguridad y salud en el trabajo', tipo:'correcta'},
-            {nombre:'Poblacional y territorial', tipo:'incorrecta'},
-           ],
-        }
+        
     },
     created(){
          // document.addEventListener('DOMContentLoaded', function() {
@@ -30,24 +11,7 @@ new Vue({
       },
       mounted(){
          /////////////////Contador ///////////////////////
-         let elem = document.querySelector('#conteo');
-         let conteo = M.Modal.init(elem,{
-            dismissible:false,
-            opacity:1,
-            endingTop:30
-         });
-         conteo.open();
-         let contador = 0;
-         // Tiempo en en el que deseas que redireccione la funcion.
-         setInterval(()=>{
-            this.hora()
-            if (contador >= this.fin_contador) {
-               conteo.close()
-               // setInterval(this.hora(),500)
-           }else{
-               this.fin_contador = this.fin_contador-1 
-           }
-       },1000);
+         
 //////////////////////////Contador////////////////   
     },
     methods:{
